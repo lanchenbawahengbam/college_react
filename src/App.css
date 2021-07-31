@@ -1,0 +1,105 @@
+#navbarScroll{
+    padding: 10px 0 10px 500px;
+   
+}
+
+.imgSlider{
+    object-fit: fill;
+    height: 500px;
+    width: 100%;
+}
+
+
+.login{
+   border-radius: 30px;
+    padding: 40px;
+    padding-top: 60px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/* CARD */
+
+.card-container{
+    margin: 20px;
+    width: 20%;
+    display: inline-block;
+}
+
+.card-header{
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footer{
+   
+    width: 100%;
+    background-color: black;
+    color: white;
+
+}
+
+
+
+.footer-link{
+    color:red;
+    text-align: center;
+
+}
+.nav-header{
+    font-family:'Anton', sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
+
+}
+
+/* civil table */
+
+
+
+.table{
+   width: 90%;
+   table-layout: fixed;
+   margin:auto;
+   padding-bottom: 50px;
+  
+}
+
+.table td{
+   margin: 100px;
+
+   height: 15px;
+   padding: 10px;
+   vertical-align: middle;
+  
+}
+
+.table th{
+   height: 15px;
+   padding: 10px;
+   vertical-align: middle;
+   
+}
+
+.table-id{
+    width: 50px;
+    text-align: center;
+}
+
+.civil-header{
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Bebas Neue', cursive;
+}
+
+#th-data{
+    text-align: center;
+}
+
