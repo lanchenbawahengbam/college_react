@@ -20,6 +20,7 @@ import Contact from "./Components/Contact";
 import Login from "./Components/Login";
 import { Switch, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
+import Registration from "./Components/Registration";
 
 function App() {
   return (
@@ -27,22 +28,23 @@ function App() {
       <img className="logo" src={logo} alt="logo..." />
       <NavBar />
       <Switch>
-        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/" component={Home} /> */}
         <Route exact path="/Academics" component={Academics} />
         <Route exact path="/Vice_chancellor" component={Vice_chancellor} />
         <Route exact path="/Principal" component={Principal} />
         <Route exact path="/Institute" component={Institute} />
         <Route exact path="/Hostel" component={Hostel} />
-        <Route exact path="/Civil" component={Civil} />
-        <Route exact path="/Computer" component={Computer} />
-        <Route exact path="/Electronics" component={Electronics} />
-        <Route exact path="/Electrical" component={Electrical} />
-        <Route exact path="/Mechanical" component={Mechanical} />
+        <Route exact path="/ce" component={Civil} />
+        <Route exact path="/cse" component={Computer} />
+        <Route exact path="/ece" component={Electronics} />
+        <Route exact path="/ee" component={Electrical} />
+        <Route exact path="/me" component={Mechanical} />
         <Route exact path="/Basic" component={Basic} />
         <Route exact path="/Facility" component={Facility} />
         <Route exact path="/Gallery" component={Gallery} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/Login" component={Login} />
+        <Route exact path="/" component={Registration} />
       </Switch>
       <Footer />
     </div>

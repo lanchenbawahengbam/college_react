@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { BASE_URL } from "../Helper/constant";
 
 function NavBar() {
+
+  const [department, setDepartment] = React.useState([])
+  const history = useHistory();
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/department/`, {
+      method: 'GET', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        setDepartment(data)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [])
+
+
+
   return (
     <div>
       <Navbar bg="secondary" variant="dark" expand="xl">
@@ -25,29 +49,15 @@ function NavBar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Department" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/Civil">
-                Department of Civil Engineering
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Computer">
-                Department of Computer Science & Engineering
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Electronics">
-                Department of Electronics & Communication Engineering
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Basic">
-                Department of Basic Science & Humanity
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Mechanical">
-                Department of Mechanical Engineering
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Electrical">
-                Department of Electrical Engineering
-              </NavDropdown.Item>
+              {department && department.map((dept, idx) => (
+
+                <NavDropdown.Item key={idx} onClick={() => { history.push(`/${dept.value}`) }}>
+                  {dept.name}
+                </NavDropdown.Item>
+
+              ))}
+
+
             </NavDropdown>
             <Nav.Link href="/Facility">Facility</Nav.Link>
             <Nav.Link href="/Gallery">Gallery</Nav.Link>
