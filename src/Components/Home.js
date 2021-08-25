@@ -1,56 +1,76 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
-import image1 from "../Components/assets/images/1.png";
-import image2 from "../Components/assets/images/2.png";
-import image3 from "../Components/assets/images/3.png";
-import image4 from "../Components/assets/images/4.png";
-import image5 from "../Components/assets/images/5.png";
-import image6 from "../Components/assets/images/6.png";
+
 function Home() {
   return (
     <div>
       <Carousel>
-        <Carousel.Item interval={1000}>
-          <img className="imgSlider" src={image1} alt="First slide" />
-          <Carousel.Caption>
-            <h3>Computer Science & Engineering</h3>
-            <p>A picture of Artificial Intelligence</p>
+        <Carousel.Item interval={2500}>
+          <img
+            className="imgSlider"
+            src="https://mitimphal.in/uploads/slider/sld1624378642.jpg"
+            alt="First slide"
+          />
+          <Carousel.Caption className="carouselCaption">
+            <h3>Vaccines for all</h3>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <img className="imgSlider" src={image2} alt="Second slide" />
-          <Carousel.Caption>
-            <h3>Civil Engineering</h3>
-            <p>A picture of AutoCad</p>
+        <Carousel.Item interval={2500}>
+          <img
+            className="imgSlider"
+            src="https://mitimphal.in/uploads/slider/sld1544003989.jpg"
+            alt="Second slide"
+          />
+          <Carousel.Caption className="carouselCaption">
+            <h3>
+              Shri Jarnail Singh,
+              <br /> Administrator, <br />
+              Manipur University with Prize Winner of MIT WEEK 2018
+            </h3>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <img className="imgSlider" src={image3} alt="Third slide" />
-          <Carousel.Caption>
-            <h3>Electronics & Communication Engineering</h3>
-            <p>A picture representation on Circuit Board</p>
+        <Carousel.Item interval={2500}>
+          <img
+            className="imgSlider"
+            src="https://mitimphal.in/uploads/slider/sld1579772758.jpg"
+            alt="Third slide"
+          />
+          <Carousel.Caption className="carouselCaption">
+            <h3>
+              Inauguration of AICTE sponsored 3-days Faculty Development
+              Programme on “Universal Human Values”
+            </h3>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <img className="imgSlider" src={image4} alt="Forth slide" />
-          <Carousel.Caption>
-            <h3>Electrical Engineering</h3>
-            <p>A picture representation on wire connection</p>
+        <Carousel.Item interval={2500}>
+          <img
+            className="imgSlider"
+            src="https://mitimphal.in/uploads/slider/sld1544005459.jpg"
+            alt="Forth slide"
+          />
+          <Carousel.Caption className="carouselCaption">
+            <h3>MIT WEEK 2018 OVERALL TEAM CHAMPION</h3>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <img className="imgSlider" src={image5} alt="Fifth slide" />
-          <Carousel.Caption>
-            <h3>Mechanical Engineering</h3>
-            <p>A picture representation on Automobile testing</p>
+        <Carousel.Item interval={2500}>
+          <img
+            className="imgSlider"
+            src="https://mitimphal.in/uploads/slider/sld1542788295.jpg"
+            alt="Fifth slide"
+          />
+          <Carousel.Caption className="carouselCaption">
+            <h3>MIT WEEK 2018 OPENING CEREMONY (12th NOV, 2018)</h3>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <img className="imgSlider" src={image6} alt="Sixth slide" />
-          <Carousel.Caption>
-            <h3>Basic Science & Humanity</h3>
-            <p>A picture representation on Chemistry Lab</p>
+        <Carousel.Item interval={2500}>
+          <img
+            className="imgSlider"
+            src="https://mitimphal.in/uploads/slider/sld1507277462.jpg"
+            alt="Sixth slide"
+          />
+          <Carousel.Caption className="carouselCaption">
+            <h3>New Building of MIT at MU Campus</h3>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

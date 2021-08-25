@@ -21,14 +21,18 @@ import Login from "./Components/Login";
 import { Switch, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Registration from "./Components/Registration";
+import Admin from "./Components/Admin/Admin";
+import Admissionform from "./Components/Admission/Admissionform";
+import AdmissionTable from "./Components/Admission/AdmissionTable";
 
 function App() {
   return (
     <div>
       <img className="logo" src={logo} alt="logo..." />
       <NavBar />
+
       <Switch>
-        {/* <Route exact path="/" component={Home} /> */}
+        <Route exact path="/" component={Home} />
         <Route exact path="/Academics" component={Academics} />
         <Route exact path="/Vice_chancellor" component={Vice_chancellor} />
         <Route exact path="/Principal" component={Principal} />
@@ -39,12 +43,15 @@ function App() {
         <Route exact path="/ece" component={Electronics} />
         <Route exact path="/ee" component={Electrical} />
         <Route exact path="/me" component={Mechanical} />
-        <Route exact path="/Basic" component={Basic} />
+        <Route exact path="/bs" component={Basic} />
         <Route exact path="/Facility" component={Facility} />
         <Route exact path="/Gallery" component={Gallery} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/Login" component={Login} />
+        <Route exact path="/Admin" component={Admin} />
         <Route exact path="/" component={Registration} />
+        <Route exact path="/Admissionform" component={Admissionform} />
+        <Route exact path="/AdmissionTable" component={AdmissionTable} />
       </Switch>
       <Footer />
     </div>

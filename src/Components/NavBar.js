@@ -4,27 +4,24 @@ import { useHistory } from "react-router-dom";
 import { BASE_URL } from "../Helper/constant";
 
 function NavBar() {
-
-  const [department, setDepartment] = React.useState([])
+  const [department, setDepartment] = React.useState([]);
   const history = useHistory();
 
   useEffect(() => {
     fetch(`${BASE_URL}/department/`, {
-      method: 'GET', // or 'PUT'
+      method: "GET", // or 'PUT'
       headers: {
-        'Content-Type': 'application/json',
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => response.json())
-      .then(data => {
-        setDepartment(data)
+      .then((response) => response.json())
+      .then((data) => {
+        setDepartment(data);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
-  }, [])
-
-
+  }, []);
 
   return (
     <div>
@@ -49,15 +46,17 @@ function NavBar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Department" id="navbarScrollingDropdown">
-              {department && department.map((dept, idx) => (
-
-                <NavDropdown.Item key={idx} onClick={() => { history.push(`/${dept.value}`) }}>
-                  {dept.name}
-                </NavDropdown.Item>
-
-              ))}
-
-
+              {department &&
+                department.map((dept, idx) => (
+                  <NavDropdown.Item
+                    key={idx}
+                    onClick={() => {
+                      history.push(`/${dept.value}`);
+                    }}
+                  >
+                    {dept.name}
+                  </NavDropdown.Item>
+                ))}
             </NavDropdown>
             <Nav.Link href="/Facility">Facility</Nav.Link>
             <Nav.Link href="/Gallery">Gallery</Nav.Link>
