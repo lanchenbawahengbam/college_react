@@ -1,34 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { BASE_URL } from "../Helper/constant";
+
+import * as urlConst from "../Helper/constant";
 
 function NavBar() {
-  const [department, setDepartment] = React.useState([]);
-  const history = useHistory();
-
+  const [departmentData, setDepartmentData] = useState([]);
   useEffect(() => {
-    fetch(`${BASE_URL}/department/`, {
-      method: "GET", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setDepartment(data);
-      })
+    axios
+      .get(`${urlConst.BASE_URL}/department/getDepartment`)
+      .then((response) => setDepartmentData(response.data.result))
       .catch((error) => {
         console.error("Error:", error);
       });
   }, []);
+  const history = useHistory();
+
+  function handleButton(check) {
+    switch (check) {
+      case "home":
+        console.log("Home Clicked");
+        history.push(urlConst.HOME);
+        break;
+      case "login":
+        console.log("Login Clicked");
+        history.push(urlConst.LOGIN);
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div>
       <Navbar bg="secondary" variant="dark" expand="xl">
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link onClick={() => handleButton("home")}>Home</Nav.Link>
             <Nav.Link href="/Academics">Academics</Nav.Link>
             <NavDropdown title="Administration" id="basic-nav-dropdown">
               <NavDropdown.Item href="/Vice_chancellor">
@@ -46,15 +55,16 @@ function NavBar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Department" id="navbarScrollingDropdown">
-              {department &&
-                department.map((dept, idx) => (
+              {departmentData &&
+                departmentData.map((dept, idx) => (
                   <NavDropdown.Item
                     key={idx}
                     onClick={() => {
-                      history.push(`/${dept.value}`);
+                      console.log(departmentData);
+                      history.push(`/${dept.departmentcode}`);
                     }}
                   >
-                    {dept.name}
+                    {dept.departmentname}
                   </NavDropdown.Item>
                 ))}
             </NavDropdown>

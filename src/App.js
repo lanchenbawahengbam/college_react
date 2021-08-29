@@ -38,12 +38,12 @@ function App() {
         <Route exact path="/Principal" component={Principal} />
         <Route exact path="/Institute" component={Institute} />
         <Route exact path="/Hostel" component={Hostel} />
-        <Route exact path="/ce" component={Civil} />
+        <Route exact path="/C.E" component={Civil} />
         <Route exact path="/cse" component={Computer} />
-        <Route exact path="/ece" component={Electronics} />
+        <Route exact path="/ec" component={Electronics} />
         <Route exact path="/ee" component={Electrical} />
-        <Route exact path="/me" component={Mechanical} />
-        <Route exact path="/bs" component={Basic} />
+        <Route exact path="/m.e" component={Mechanical} />
+        <Route exact path="/bsh" component={Basic} />
         <Route exact path="/Facility" component={Facility} />
         <Route exact path="/Gallery" component={Gallery} />
         <Route exact path="/Contact" component={Contact} />

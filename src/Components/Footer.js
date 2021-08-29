@@ -1,27 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Col, Container, NavLink, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { BASE_URL } from "../Helper/constant";
+
+import * as urlConst from "../Helper/constant";
 
 function Footer() {
-  const [department, setDepartment] = React.useState([]);
-  const history = useHistory();
-
+  const [departmentData, setDepartmentData] = useState([]);
   useEffect(() => {
-    fetch(`${BASE_URL}/department/`, {
-      method: "GET", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setDepartment(data);
-      })
+    axios
+      .get(`${urlConst.BASE_URL}/department/getDepartment`)
+      .then((response) => setDepartmentData(response.data.result))
       .catch((error) => {
         console.error("Error:", error);
       });
   }, []);
+  const history = useHistory();
 
   return (
     <div className="footer">
@@ -32,15 +26,15 @@ function Footer() {
               Department <hr />
             </div>
             <NavLink title="Department" id="navbarScrollingDropdown">
-              {department &&
-                department.map((dept, idx) => (
+              {departmentData &&
+                departmentData.map((dept, idx) => (
                   <NavLink
                     key={idx}
                     onClick={() => {
-                      history.push(`/${dept.value}`);
+                      history.push(`/${dept.departmentcode}`);
                     }}
                   >
-                    {dept.name}
+                    {dept.departmentname}
                   </NavLink>
                 ))}
             </NavLink>
@@ -64,7 +58,7 @@ function Footer() {
 
           <Col>
             <div className="nav-header">
-              Facility <hr />
+              Contact us <hr />
             </div>
           </Col>
           <Col>
