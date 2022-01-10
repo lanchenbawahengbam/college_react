@@ -1,0 +1,34 @@
+.principalRoot{
+    background-color: rgb(226, 222, 226);
+    height: 100%;
+ 
+}
+
+.principalImg{ 
+    margin: 50px auto;
+    display: block;
+      height: 400px;
+}
+
+.principalHeader{
+     margin: 30px 50px;
+    height: 400;
+    padding: 10px;
+    text-align: center;
+    color:#053232;
+}
+
+.principalHeader h1{
+     font-size: 50px;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 300;
+        line-height: 0.8;
+}
+
+
+.principalHeader p{
+     font-size: 20px;
+        font-weight: 400; 
+        text-indent: 50px;
+        margin-top: 20px;
+}

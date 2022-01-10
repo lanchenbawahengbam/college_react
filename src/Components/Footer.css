@@ -1,0 +1,21 @@
+.footer {
+  display: block;
+  width: 100%;
+}
+
+.footer-link {
+  color: white;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+.icon {
+  vertical-align: middle;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 150px;
+  width: 30px;
+  height: 10px;
+  font-size: 40px;
+}
