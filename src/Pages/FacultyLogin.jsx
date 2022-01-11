@@ -51,7 +51,7 @@ const FacultyLogin = () => {
                                         localStorage.setItem("token", token);
                                         console.log('Success:', response);
                                         alert("Success")
-                                        history.push("/faculty/showFaculty")
+                                        history.push("/admin")
                                     })
                                     .catch((error) => {
                                         console.error('Error:', error);
