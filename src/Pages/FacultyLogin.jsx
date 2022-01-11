@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router';
 import { BASE_URL } from '../Helper/constant';
@@ -10,20 +10,6 @@ import { RiAccountCircleFill } from 'react-icons/ri';
 const FacultyLogin = () => {
 
     const history = useHistory();
-    const [facultyData, setFacultyData] = useState([]);
-
-    useEffect(() => {
-        getFaculty()
-    }, [])
-
-    const getFaculty = () => {
-
-        axios.get(`${BASE_URL}/faculty/getFaculty`)
-            .then(response => setFacultyData(response.data.result))
-            .catch((error) => {
-                console.error('Error:', error)
-            });
-    };
 
     useEffect(() => {
         localStorage.setItem("auth", false);
@@ -50,10 +36,6 @@ const FacultyLogin = () => {
                             .required("Password is required"),
                     })}
                 onSubmit={(payload) => {
-
-                    {
-                        facultyData && facultyData.map((d) => {
-                            const { _id } = d;
                             const { email, password } = payload;
                             return (
                                 axios.post(`${BASE_URL}/faculty/login`,
@@ -68,15 +50,14 @@ const FacultyLogin = () => {
                                         localStorage.setItem("auth", true);
                                         localStorage.setItem("token", token);
                                         console.log('Success:', response);
-                                        history.push(`/faculty/getSingleFaculty/${_id}`);
+                                        alert("Success")
+                                        history.push("/faculty/showFaculty")
                                     })
                                     .catch((error) => {
                                         console.error('Error:', error);
                                         alert("Login Fail")
                                     })
                             )
-                        })
-                    }
                 }}
             >
                 {({
