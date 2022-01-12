@@ -1,27 +1,34 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Nav, Navbar, NavDropdown, OverlayTrigger, Button, Popover, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
-
 import * as urlConst from '../Helper/constant'
 
 
 
 const NavBar = () => {
-
-
-    const [departmentData, setDepartmentData] = useState([]);
-
-
-    useEffect(() => {
-        axios.get(`${urlConst.BASE_URL}/department/getDepartment`)
-            .then(response => setDepartmentData(response.data.result))
-            .catch((error) => {
-                console.error('Error:', error)
-            })
-    }, [])
-
     const history = useHistory();
+
+    const [state, setState] = useState({
+        departmentcode: "",
+
+    })
+
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setState({
+            ...state,
+            [name]: value
+        })
+    }
+
+    const onSubmit = async () => {
+        const response = await axios.post(`${urlConst.BASE_URL}/faculty/getDepartmentFaculty`, state);
+        console.log(response.data.result)
+        history.push('/faculty/showFacultyDepartment')
+    }
 
 
     function handleButton(check) {
@@ -65,19 +72,36 @@ const NavBar = () => {
                     <Nav className="me-auto">
                         <Nav.Link onClick={() => handleButton("home")}>Home</Nav.Link>
 
-                        <NavDropdown title="Department" id="navbarScrollingDropdown">
-                            {departmentData && departmentData.map((dept, idx) => (
 
-                                <NavDropdown.Item key={idx} onClick={() => {
-                                    console.log(departmentData)
-                                    history.push(`/${dept.departmentcode}`)
-                                }}>
+                        {['bottom'].map((placement) => (
+                            <OverlayTrigger
+                                trigger="click"
+                                key={placement}
+                                placement={placement}
+                                overlay={
+                                    <Popover id='Department'>
+                                        <Popover.Body>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Department Code"
+                                                name="departmentcode"
+                                                onChange={handleChange}
+                                                value={state.departmentcode}
+                                            />
+                                            <div style={{ display: 'flex', marginTop: 20, marginLeft: 50 }} >
+                                                <Button
+                                                    type='submit'
+                                                    onClick={() => onSubmit()}
+                                                >Submit</Button>
+                                            </div>
+                                        </Popover.Body>
+                                    </Popover>
+                                }
+                            >
+                                <Button variant="black" style={{ color: 'white' }}>Department</Button>
+                            </OverlayTrigger>
+                        ))}
 
-                                    {dept.departmentname}
-
-                                </NavDropdown.Item>
-                            ))}
-                        </NavDropdown>
                         <NavDropdown title="Administration" id="collasible-nav-dropdown">
                             <NavDropdown.Item onClick={() => handleButton("principal")}>Principal</NavDropdown.Item>
                             <NavDropdown.Item onClick={() => handleButton("viceChancellor")}>Vice-Chancellor</NavDropdown.Item>

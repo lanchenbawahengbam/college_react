@@ -23,6 +23,7 @@ export const SHOW_DEPARTMENT = "/department/showDepartment";
 export const ADD_FACULTY = "/faculty/addFaculty";
 export const SHOW_FACULTY = "/faculty/showFaculty";
 export const VIEWFACULTY = "/admin/viewFaculty";
+export const SHOW_FACULTY_DEPARTMENT = '/faculty/showFacultyDepartment'
 
 
 // // STUDENT

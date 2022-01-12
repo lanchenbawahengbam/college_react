@@ -22,6 +22,7 @@ import FacultyLogin from './Pages/FacultyLogin';
 import ViewFaculty from './Pages/faculty/ViewFaculty';
 import UpdateFaculty from './Pages/faculty/UpdateFaculty';
 import SingleFaculty from './Pages/faculty/SingleFaculty';
+import ShowFacultyDepartment from './Components/ShowFacultyDepartment';
 
 const App = () => {
   return (
@@ -75,6 +76,13 @@ const App = () => {
           
         )} />
 
+         <Route exact path={urlConst.SHOW_FACULTY_DEPARTMENT}  component={() => (
+            <Layout>
+               <ShowFacultyDepartment />
+            </Layout>
+          
+        )} />
+
         {/* ADMIN ROUTE */}
 
         <Route exact path={urlConst.ADMIN} component={HomeAdmin} />
@@ -88,6 +96,7 @@ const App = () => {
         <Route exact path={urlConst.VIEWFACULTY} component={ViewFaculty} />
         <Route exact path='/faculty/getSingleFaculty/:_id' component={SingleFaculty} />
         <Route exact path='/faculty/update/:_id' component={UpdateFaculty}/>
+       
 
 
       </Switch>

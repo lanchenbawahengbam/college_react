@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 const ViewAdmin = () => {
 
-
     const [adminData, setAdminData] = useState([]);
 
     useEffect(() => {
